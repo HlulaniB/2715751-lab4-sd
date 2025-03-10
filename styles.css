@@ -4,7 +4,7 @@ body {
     background-color: #f0f8ff; /* light blue background */
 }
 
-input, button {
+input, button { 
     padding: 10px;
     margin: 5px;
     background-color: #e6f7ff; /* very light cyan */
