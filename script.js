@@ -5,11 +5,12 @@ const borderingCountries = document.getElementById('bordering-countries');
 async function fetchCountryByName(countryName) {
     try {
         const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
-        if (!res.ok) throw new Error('Country not found');
+        if (!res.ok) throw new Error('Country not found.');
         const data = await res.json();
         displayCountryInfo(data[0]);
     } catch (error) {
         countryInfo.innerHTML = `<p>Error: ${error.message}</p>`;
+        borderingCountries.innerHTML = '';
     }
 }
 
@@ -18,8 +19,6 @@ function displayCountryInfo(country) {
         <h2>${country.name.common}</h2>
         <p><strong>Capital:</strong> ${country.capital}</p>
         <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
-        <p><strong>Region:</strong> ${country.region}</p>
-        <p><strong>Flag:</strong></p>
         <img src="${country.flags.png}" alt="${country.name.common} flag">
     `;
 
@@ -28,11 +27,7 @@ function displayCountryInfo(country) {
         country.borders.forEach(async (border) => {
             const borderRes = await fetch(`https://restcountries.com/v3.1/alpha/${border}`);
             const borderData = await borderRes.json();
-            const neighbor = borderData[0];
-            borderingCountries.innerHTML += `
-                <p>${neighbor.name.common}:</p>
-                <img src="${neighbor.flags.png}" alt="${neighbor.name.common} flag">
-            `;
+            borderingCountries.innerHTML += `<p>${borderData[0].name.common}</p>`;
         });
     } else {
         borderingCountries.innerHTML = '<p>No bordering countries found.</p>';
