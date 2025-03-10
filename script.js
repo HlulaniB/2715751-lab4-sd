@@ -11,7 +11,7 @@ async function fetchCountryByName(countryName) {
     } catch (error) {
         countryInfo.innerHTML = `<p>Error: ${error.message}</p>`;
         borderingCountries.innerHTML = '';
-    }
+    } 
 }
 
 function displayCountryInfo(country) {
