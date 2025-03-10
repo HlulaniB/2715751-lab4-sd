@@ -7,7 +7,7 @@ try {
 const res = await fetch(`https://restcountries.com/v3.1/name/${country}`);
 if (!res.ok) throw new Error('Country not found');
 const data = await res.json();
-displayCountryInfo(data[0]); // Display the first matching country
+displayCountryInfo(data[0]); 
 } catch (error) {
 countryInfo.innerHTML = `
 
