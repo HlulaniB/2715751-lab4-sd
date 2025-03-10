@@ -1,10 +1,10 @@
-const fetchCapitalBtn = document.getElementById('fetch-capital-btn');
+const fetchCountryBtn = document.getElementById('fetch-country-btn');
 const countryInfo = document.getElementById('country-info');
 const borderingCountries = document.getElementById('bordering-countries');
 
-async function fetchCountryByCapital(capital) {
+async function fetchCountryByName(countryName) {
     try {
-        const res = await fetch(`https://restcountries.com/v3.1/capital/${capital}`);
+        const res = await fetch(`https://restcountries.com/v3.1/name/${countryName}`);
         if (!res.ok) throw new Error('Country not found');
         const data = await res.json();
         displayCountryInfo(data[0]);
@@ -19,6 +19,7 @@ function displayCountryInfo(country) {
         <p><strong>Capital:</strong> ${country.capital}</p>
         <p><strong>Population:</strong> ${country.population.toLocaleString()}</p>
         <p><strong>Region:</strong> ${country.region}</p>
+        <p><strong>Flag:</strong></p>
         <img src="${country.flags.png}" alt="${country.name.common} flag">
     `;
 
@@ -29,10 +30,8 @@ function displayCountryInfo(country) {
             const borderData = await borderRes.json();
             const neighbor = borderData[0];
             borderingCountries.innerHTML += `
-                <div>
-                    <p>${neighbor.name.common}:</p>
-                    <img src="${neighbor.flags.png}" alt="${neighbor.name.common} flag">
-                </div>
+                <p>${neighbor.name.common}:</p>
+                <img src="${neighbor.flags.png}" alt="${neighbor.name.common} flag">
             `;
         });
     } else {
@@ -40,9 +39,9 @@ function displayCountryInfo(country) {
     }
 }
 
-fetchCapitalBtn.addEventListener('click', () => {
-    const capitalInput = document.getElementById('capital-input').value;
+fetchCountryBtn.addEventListener('click', () => {
+    const countryInput = document.getElementById('country-input').value;
     countryInfo.innerHTML = '';
     borderingCountries.innerHTML = '';
-    fetchCountryByCapital(capitalInput);
+    fetchCountryByName(countryInput);
 });
