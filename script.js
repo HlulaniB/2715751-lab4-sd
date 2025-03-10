@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             countryInfo.innerHTML = `<p>Please enter a valid country name.</p>`;
         }
-    });
+    }); 
 
     async function fetchCountryByName(country) {
         try {
