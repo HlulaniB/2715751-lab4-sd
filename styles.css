@@ -1,24 +1,24 @@
 body {
     font-family: Arial, sans-serif;
     padding: 20px;
-    background-color: #f0f8ff; /* light blue background */
+   
 }
 
 input, button { 
     padding: 10px;
     margin: 5px;
-    background-color: #e6f7ff; /* very light cyan */
-    color: #005580; /* dark blue text */
+    background-color: #e6f7ff; 
+    color: #005580; 
 }
 
 #country-info, #bordering-countries {
     margin-top: 20px;
-    color: #00334d; /* darker blue text */
+    color: #00334d; 
 }
 
 img {
     width: 150px;
     height: auto;
     margin: 10px 0;
-    border: 1px solid #b3d9ff; /* soft blue border */
+    border: 1px solid #b3d9ff; 
 }
